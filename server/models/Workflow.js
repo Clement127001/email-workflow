@@ -25,7 +25,7 @@ const EdgeSchema = new mongoose.Schema(
 
 const WorkflowSchema = new mongoose.Schema(
   {
-    name: String,
+    name: { type: String, required: [true, "Workflow name is required"] },
     nodes: [NodeSchema],
     edges: [EdgeSchema],
     triggerType: { type: String, default: "manual" },

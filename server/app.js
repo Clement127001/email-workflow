@@ -16,11 +16,15 @@ const emailRouter = require("./routes/emailTemplate");
 app.use(express.json());
 app.use(allowCrossDomain);
 
+app.get("/api/hello", (req, res) => {
+  res.send("api is working, hurray!!");
+});
+
+app.use("/api/email", emailRouter);
+app.use("/api/workflow", workflowRouter);
+
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
-
-app.router("/email", emailRouter);
-app.router("/workflow", workflowRouter);
 
 const port = process.env.PORT || 3000;
 
