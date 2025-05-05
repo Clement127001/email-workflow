@@ -23,11 +23,14 @@ const EdgeSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const WorkflowSchema = new mongoose.Schema({
-  name: String,
-  nodes: [NodeSchema],
-  edges: [EdgeSchema],
-  triggerType: { type: String, default: "manual" },
-});
+const WorkflowSchema = new mongoose.Schema(
+  {
+    name: String,
+    nodes: [NodeSchema],
+    edges: [EdgeSchema],
+    triggerType: { type: String, default: "manual" },
+  },
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("Workflow", WorkflowSchema);
