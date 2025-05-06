@@ -197,6 +197,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+table th:first-child {
+  border-radius: 10px 0 0 10px;
+  border-top: none;
+}
+
+table th:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

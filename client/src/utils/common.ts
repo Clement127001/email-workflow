@@ -1,5 +1,7 @@
 import { Mail, Workflow } from "lucide-react";
 
+export const baseApiUrl = "http://localhost:3000/api";
+
 export const sidebarLinks = [
   {
     redirectLink: "/email",
