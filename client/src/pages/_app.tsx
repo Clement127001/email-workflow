@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { PageLoaderProvider } from "@/context/pageLoaderProvider";
-import "@/styles/globals.css";
 import { Toaster } from "sonner";
+import "@/styles/globals.css";
+import "@xyflow/react/dist/style.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

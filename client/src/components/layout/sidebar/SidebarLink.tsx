@@ -1,5 +1,4 @@
-import { ForwardRefExoticComponent, RefAttributes } from "react";
-import { LucideProps } from "lucide-react";
+import { IconType } from "@/types/common";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -8,9 +7,7 @@ const SidebarLink = ({
   label,
   redirectLink,
 }: {
-  Icon: ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-  >;
+  Icon: IconType;
   label: string;
   redirectLink: string;
 }) => {
