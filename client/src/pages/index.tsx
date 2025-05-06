@@ -17,16 +17,16 @@ const Home = () => {
         <div className="flex gap-10">
           <div className="space-y-2">
             <p className="font-semibold text-lg">Explore emails</p>
-            <Button>
-              <Link href={"/email"}>All Emails</Link>
-            </Button>
+            <Link href={"/email"}>
+              <Button>All Emails</Button>
+            </Link>
           </div>
 
           <div className="space-y-2">
             <p className="font-semibold text-lg">Explore Workflows</p>
-            <Button>
-              <Link href={"/workflow"}>All Workflows</Link>
-            </Button>
+            <Link href={"/workflow"}>
+              <Button>All Workflows</Button>
+            </Link>
           </div>
         </div>
       </div>

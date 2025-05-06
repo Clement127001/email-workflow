@@ -8,9 +8,9 @@ const EmailListPage = () => {
     <Layout>
       <div className="flex justify-between">
         <h1 className="text-2xl font-semibold">Email Template</h1>
-        <Button>
-          <Link href={"/email/create"}>Create Email</Link>
-        </Button>
+        <Link href={"/email/create"}>
+          <Button>Create Email</Button>
+        </Link>
       </div>
       <EmailList />
     </Layout>
