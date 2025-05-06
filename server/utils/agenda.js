@@ -23,10 +23,6 @@ agenda.define("send-email", async (job) => {
   });
 });
 
-agenda.define("delete old users", async (job) => {
-  console.log("user is got deleted dude");
-});
-
 (async function () {
   await agenda.start();
 })();

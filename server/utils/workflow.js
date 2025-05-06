@@ -1,5 +1,5 @@
 const EmailTemplate = require("../models/EmailTemplate");
-const agenda = require("../agenda");
+const agenda = require("./agenda");
 
 async function executeWorkflowByUser(workflow) {
   const nodeMap = Object.fromEntries(workflow.nodes.map((n) => [n.id, n]));
