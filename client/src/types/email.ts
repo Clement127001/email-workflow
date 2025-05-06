@@ -5,3 +5,9 @@ export interface EmailData {
   body: string;
   createdAt: Date;
 }
+
+export interface CreateEmail {
+  subject: string;
+  body: string;
+  name: string;
+}

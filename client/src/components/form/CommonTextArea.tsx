@@ -22,7 +22,7 @@ export function CommonTextArea<T extends FieldValues>({
       {label && (
         <Label
           htmlFor={name}
-          className="text-app-black-300 dark:text-app-primary-300 capitalize text-[16px]"
+          className="text-black font-semibold capitalize text-[16px]"
         >
           {label}
           {registerOptions?.required ? (

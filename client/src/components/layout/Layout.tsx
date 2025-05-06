@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <aside className="col-span-2">
         <Sidebar />
       </aside>
-      <div className="col-span-9 min-h-screen shadow-xl p-[32px__24px]">
+      <div className="col-span-9 min-h-screen shadow-xl p-[36px__24px] space-y-5">
         {children}
       </div>
     </main>

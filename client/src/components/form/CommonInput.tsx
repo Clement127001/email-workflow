@@ -29,7 +29,7 @@ export function CommonInput<T extends FieldValues>({
       {label && (
         <Label
           htmlFor={name}
-          className={`text-app-black-300 dark:text-app-primary-300 capitalize text-[16px] ${labelClassName}`}
+          className={`text-black font-semibold capitalize text-[17px] ${labelClassName}`}
         >
           {label}
           {registerOptions?.required ? (
@@ -45,7 +45,7 @@ export function CommonInput<T extends FieldValues>({
           type={type}
           placeholder={placeholder}
           disabled={disabled}
-          className={`min-h-[48px] w-full bg-white  placeholder:text-[14px] border-[1px] border-[#c1c1c1] text-app-primary-900 placeholder-app-gray-300 focus:ring-0  focus:border-app-gray-300 focus:bg-gray-50  hover:bg-gray-50  font-[450] 
+          className={`min-h-[48px] w-full bg-white  placeholder:text-[14px] border-[1px] border-[#c1c1c1] text-app-primary-900 placeholder-app-gray-300 focus:ring-0  focus:border-app-gray-300 focus:bg-gray-50  hover:bg-gray-50  font-medium
             placeholder:font-normal rounded-[12px] !text-[16px] shadow-freelancer read-only:placeholder:text-app-black-300 read-only:placeholder:text-[16px] read-only:placeholder:font-normal pl-3 md:pl-4 ${inputClassName}`}
           readOnly={readOnly}
           {...register(name, registerOptions)}

@@ -1,7 +1,14 @@
+import BackButton from "@/components/BackButton";
 import CreateEmailTemplate from "@/components/features/email/CreateEmailTemplate";
+import Layout from "@/components/layout/Layout";
 
 const CreateEmailPage = () => {
-  return <CreateEmailTemplate />;
+  return (
+    <Layout>
+      <BackButton />
+      <CreateEmailTemplate />
+    </Layout>
+  );
 };
 
 export default CreateEmailPage;
