@@ -21,7 +21,7 @@ const EmailList = () => {
     emailList && Array.isArray(emailList) && emailList.length > 0;
 
   return (
-    <div className="pt-6">
+    <div>
       <Table className="w-full text-left">
         <TableHeader className="bg-[#E2E8F0] text-[16px]">
           <TableRow>
