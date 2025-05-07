@@ -37,25 +37,11 @@ const DelayValuePickerModal = ({
   const onAddDelay: SubmitHandler<DelayValueInterface> = (data) => {
     const { delayType, delay } = data;
 
-    let delayMs = +delay;
-    const ms = 1000;
-
     if (!delayType) return;
-
-    switch (delayType.value) {
-      case DelayTypeEnum.HOUR:
-        delayMs = delayMs * 60 * 60 * ms;
-
-      case DelayTypeEnum.MINUTES:
-        delayMs = delayMs * 60 * ms;
-
-      case DelayTypeEnum.SECONDS:
-        delayMs = delayMs * ms;
-    }
 
     onAddNode({
       type: WorkFlowNodeTypeEnum.DELAY,
-      data: { delayMs },
+      data: { delay: +delay, delayType: delayType.value as DelayTypeEnum },
     });
   };
 

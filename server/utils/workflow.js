@@ -19,7 +19,7 @@ async function executeWorkflowByUser(workflow) {
       );
       if (emailTemplate) {
         await agenda.schedule(new Date(Date.now() + delayMs), "send-email", {
-          to: emailTemplate.data.to,
+          to: currentNode.data.to,
           subject: emailTemplate.subject,
           html: emailTemplate.body,
         });

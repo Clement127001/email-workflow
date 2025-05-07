@@ -16,7 +16,6 @@ agenda.define("send-email", async (job) => {
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
-    from: "maddison53@ethereal.email",
     to,
     subject,
     html,

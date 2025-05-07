@@ -56,6 +56,7 @@ const NodeTypePickerModal = ({
 
                 return (
                   <div
+                    key={title}
                     className={`border-[1px] rounded-sm flex items-center p-3 gap-2 ${
                       isActive && "border-app-primary-600 text-app-primary-700"
                     }`}

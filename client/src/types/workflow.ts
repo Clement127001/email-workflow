@@ -13,8 +13,10 @@ export interface AddNodeInterface {
   type: WorkFlowNodeTypeEnum;
   data: {
     emailTemplateId?: string;
+    emailTemplateName?: string;
     to?: string;
-    delayMs?: number;
+    delayType?: DelayTypeEnum;
+    delay?: number;
   };
 }
 
@@ -28,4 +30,14 @@ export interface EmailValueInterface {
 export interface DelayValueInterface {
   delay: number;
   delayType: OptionInterface | null;
+}
+
+export interface WorkflowDataInterface {
+  name: string;
+  nodes: any[];
+  edges: {
+    id: string;
+    source: string;
+    target: string;
+  }[];
 }

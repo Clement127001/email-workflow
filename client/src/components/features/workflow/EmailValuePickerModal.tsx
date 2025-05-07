@@ -58,7 +58,11 @@ const EmailValuePickerModal = ({
 
     onAddNode({
       type: WorkFlowNodeTypeEnum.EMAIL,
-      data: { emailTemplateId: emailTemplateId.value, to },
+      data: {
+        emailTemplateId: emailTemplateId.value,
+        emailTemplateName: emailTemplateId.label,
+        to,
+      },
     });
   };
 

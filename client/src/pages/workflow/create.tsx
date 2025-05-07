@@ -6,7 +6,6 @@ const CreateWorkflowPage = () => {
   return (
     <Layout>
       <BackButton />
-      <h1 className="text-2xl font-semibold">Create your workflow</h1>
       <CreateWorkflow />
     </Layout>
   );

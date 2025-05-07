@@ -6,7 +6,7 @@ export default function Title() {
   const hForm = useFormContext();
 
   return (
-    <div className="bg-white p-5 rounded-md shadow-lg">
+    <div className="bg-white p-5 rounded-md shadow-lg border-[1px]">
       <CommonInput
         label={"Workflow Name"}
         placeholder={"Enter "}
