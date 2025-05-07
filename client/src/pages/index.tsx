@@ -1,8 +1,11 @@
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { UseLogin } from "@/context/LoginProvider";
 import Link from "next/link";
 
 const Home = () => {
+  const { isLoggedIn } = UseLogin();
+
   return (
     <Layout>
       <div className="space-y-5">
@@ -17,14 +20,14 @@ const Home = () => {
         <div className="flex gap-10">
           <div className="space-y-2">
             <p className="font-semibold text-lg">Explore emails</p>
-            <Link href={"/email"}>
+            <Link href={isLoggedIn ? "/email" : "/login?ua=true"}>
               <Button>All Emails</Button>
             </Link>
           </div>
 
           <div className="space-y-2">
             <p className="font-semibold text-lg">Explore Workflows</p>
-            <Link href={"/workflow"}>
+            <Link href={isLoggedIn ? "/workflow" : "/login?ua=true"}>
               <Button>All Workflows</Button>
             </Link>
           </div>

@@ -26,6 +26,7 @@ import {
   WorkflowDataInterface,
   WorkFlowNodeTypeEnum,
 } from "@/types/workflow";
+import Cookies from "js-cookie";
 
 const NodeTypePickerModal = dynamic(
   import("@/components/features/workflow/NodeTypePickerModal").then(
@@ -234,12 +235,16 @@ const CreateWorkflow = () => {
 
     workflowData.nodes = transformedData;
 
-    showPageLoader();
+    showPageLoader("Creating Workflow");
 
     try {
+      const userToken = Cookies.get("userToken");
       const response = await fetch(`${baseApiUrl}/workflow`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
         body: JSON.stringify(workflowData),
       });
 

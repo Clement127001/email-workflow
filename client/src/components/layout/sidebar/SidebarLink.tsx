@@ -1,3 +1,4 @@
+import { UseLogin } from "@/context/LoginProvider";
 import { IconType } from "@/types/common";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,12 +12,13 @@ const SidebarLink = ({
   label: string;
   redirectLink: string;
 }) => {
+  const { isLoggedIn } = UseLogin();
   const router = useRouter();
   const isActive = router.asPath.includes(redirectLink);
 
   return (
     <Link
-      href={redirectLink}
+      href={isLoggedIn ? redirectLink : "/login?ua=true"}
       className={`p-3 flex items-center gap-4  ${
         isActive
           ? "hover:bg-app-primary-700 bg-app-primary-700"

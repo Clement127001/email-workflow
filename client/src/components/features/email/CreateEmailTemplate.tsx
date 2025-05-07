@@ -1,4 +1,6 @@
 import { Plus } from "lucide-react";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { CommonInput } from "@/components/form/CommonInput";
@@ -7,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { CreateEmail } from "@/types/email";
 import { usePageLoader } from "@/context/pageLoaderProvider";
 import { baseApiUrl } from "@/utils/common";
-import { useRouter } from "next/router";
 
 const CreateEmailTemplate = () => {
   const createEmailForm = useForm<CreateEmail>({
@@ -19,12 +20,16 @@ const CreateEmailTemplate = () => {
 
   const { handleSubmit } = createEmailForm;
   const onCreateEmail: SubmitHandler<CreateEmail> = async (data) => {
-    showPageLoader();
+    showPageLoader("Creating email template");
 
     try {
+      const userToken = Cookies.get("userToken");
       const response = await fetch(`${baseApiUrl}/email`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
         body: JSON.stringify(data),
       });
 

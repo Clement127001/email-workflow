@@ -41,3 +41,9 @@ export interface WorkflowDataInterface {
     target: string;
   }[];
 }
+
+export interface WorkflowData {
+  id: string;
+  name: string;
+  createdAt: string;
+}

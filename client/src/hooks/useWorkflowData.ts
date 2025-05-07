@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { baseApiUrl } from "@/utils/common";
-import { EmailData } from "@/types/email";
+import { WorkflowData } from "@/types/workflow";
 import Cookies from "js-cookie";
 
-export const useEmailData = () => {
-  const [emailList, setEmailList] = useState<EmailData[] | null>(null);
+export const useWorkflowData = () => {
+  const [workflowList, setWorkflowList] = useState<WorkflowData[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchEmailData = async () => {
+  const fetchWorkflowData = async () => {
     setIsLoading(true);
-    const emailListUrl = `${baseApiUrl}/email/`;
+    const workflowListUrl = `${baseApiUrl}/workflow/`;
 
     const userToken = Cookies.get("userToken");
-
-    const response = await fetch(emailListUrl, {
+    const response = await fetch(workflowListUrl, {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -23,12 +22,12 @@ export const useEmailData = () => {
     if (response.ok) {
       const data = await response.json();
 
-      const transformedData: EmailData[] = data.map((item: any) => {
-        const { name, _id, subject, body, createdAt } = item;
-        return { name, id: _id, subject, body, createdAt };
+      const transformedData: WorkflowData[] = data.map((item: any) => {
+        const { name, _id, createdAt } = item;
+        return { name, id: _id, createdAt };
       });
 
-      setEmailList(transformedData);
+      setWorkflowList(transformedData);
       setIsLoading(false);
       setError(null);
     } else {
@@ -39,8 +38,8 @@ export const useEmailData = () => {
   };
 
   useEffect(() => {
-    fetchEmailData();
+    fetchWorkflowData();
   }, []);
 
-  return { isLoading, error, emailList, fetchEmailData };
+  return { isLoading, error, workflowList, fetchWorkflowData };
 };

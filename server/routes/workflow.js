@@ -8,6 +8,6 @@ const router = require("express").Router();
 
 router.post("/", addWorkflow);
 router.get("/", getAllWorkflows);
-router.get("/:id/execute", executeWorkflow);
+router.post("/:id/execute", executeWorkflow);
 
 module.exports = router;

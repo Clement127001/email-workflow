@@ -5,6 +5,8 @@ import { LogOut, Workflow } from "lucide-react";
 import Link from "next/link";
 import SidebarLink from "@/components/layout/sidebar/SidebarLink";
 import { logout, sidebarLinks } from "@/utils/common";
+import { UseLogin } from "@/context/LoginProvider";
+import { Button } from "@/components/ui/button";
 
 const LogoutConfirmationModal = dynamic(
   import("@/components/ConfirmationModal").then((mod) => mod.default),
@@ -15,6 +17,7 @@ const Sidebar = () => {
   const [logoutConfirmationModalOpened, setLogoutConfirmationModalOpened] =
     useState<boolean>(false);
   const router = useRouter();
+  const { isLoggedIn } = UseLogin();
 
   const handleCloseLogoutConfirmationModal = () => {
     setLogoutConfirmationModalOpened(false);
@@ -22,7 +25,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     logout();
-    router.push("/?ua=false");
+    router.push("/login?ua=false");
   };
 
   return (
@@ -47,20 +50,23 @@ const Sidebar = () => {
             ))}
           </nav>
         </section>
-
-        <section
-          aria-description="admin-account"
-          className="p-2 rounded-full border border-app-gray-200 shadow-sm  cursor-pointer flex gap-2 items-center"
-        >
-          <LogOut
-            size={32}
-            className="text-red-500 p-2 hover:bg-app-gray-100 rounded-full"
-            strokeWidth={2.4}
+        {isLoggedIn && (
+          <Button
+            className="bg-app-accent-error-500 hover:bg-app-accent-error-600 text-white w-full"
             onClick={() => {
               setLogoutConfirmationModalOpened(true);
             }}
-          />
-        </section>
+          >
+            <LogOut
+              size={32}
+              strokeWidth={2.4}
+              onClick={() => {
+                setLogoutConfirmationModalOpened(true);
+              }}
+            />
+            Logout
+          </Button>
+        )}
       </section>
 
       {logoutConfirmationModalOpened && (

@@ -4,6 +4,7 @@ import { PageLoaderProvider } from "@/context/pageLoaderProvider";
 import { Toaster } from "sonner";
 import "@/styles/globals.css";
 import "@xyflow/react/dist/style.css";
+import { LoginProvider } from "@/context/LoginProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Toaster />
       <PageLoaderProvider>
-        <Component {...pageProps} />
+        <LoginProvider>
+          <Component {...pageProps} />
+        </LoginProvider>
       </PageLoaderProvider>
     </>
   );

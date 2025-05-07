@@ -93,7 +93,7 @@ const EmailList = () => {
 
       {!showEmailList && (
         <p className="w-full text-center font-medium text-app-accent-error-500 py-10">
-          No books found for given filters
+          No email template found
         </p>
       )}
     </div>

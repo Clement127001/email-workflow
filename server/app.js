@@ -11,6 +11,7 @@ const authMiddleware = require("./middleware/authentication");
 const allowCrossDomain = require("./middleware/allow-cors");
 
 const workflowRouter = require("./routes/workflow");
+const authRouter = require("./routes/auth");
 const emailRouter = require("./routes/emailTemplate");
 
 app.use(express.json());
@@ -20,8 +21,9 @@ app.get("/api/hello", (req, res) => {
   res.send("api is working, hurray!!");
 });
 
-app.use("/api/email", emailRouter);
-app.use("/api/workflow", workflowRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/email", authMiddleware, emailRouter);
+app.use("/api/workflow", authMiddleware, workflowRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

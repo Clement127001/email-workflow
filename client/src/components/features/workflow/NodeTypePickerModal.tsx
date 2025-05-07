@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import {
   Dialog,
   DialogClose,
@@ -11,8 +12,20 @@ import {
 import { Button } from "@/components/ui/button";
 import { AddNodeInterface, WorkFlowNodeTypeEnum } from "@/types/workflow";
 import { workflowNodes } from "@/utils/workflow";
-import EmailValuePickerModal from "./EmailValuePickerModal";
-import DelayValuePickerModal from "./DelayValuePickerModal";
+
+const EmailValuePickerModal = dynamic(
+  import("@/components/features/workflow/EmailValuePickerModal").then(
+    (mod) => mod.default
+  ),
+  { ssr: false }
+);
+
+const DelayValuePickerModal = dynamic(
+  import("@/components/features/workflow/DelayValuePickerModal").then(
+    (mod) => mod.default
+  ),
+  { ssr: false }
+);
 
 const NodeTypePickerModal = ({
   opened,
