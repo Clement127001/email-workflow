@@ -58,8 +58,6 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
     return <div className="w-[100vw] h-[100vh] bg-app-gray-700"></div>;
   }
 
-  console.log("boo, I am here", path);
-
   return (
     <LoginContext.Provider value={{ isLoggedIn, refreshLoginState }}>
       {children}

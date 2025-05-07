@@ -1,7 +1,7 @@
 import { Mail, Workflow } from "lucide-react";
 import Cookies from "js-cookie";
 
-export const baseApiUrl = "http://localhost:3000/api";
+export const baseApiUrl = "https://email-workflow.onrender.com/api";
 
 export const loginPages = ["/login", "/register"];
 export const loginRestrictedPages = [

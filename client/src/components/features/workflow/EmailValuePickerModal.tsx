@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import {
   Dialog,
   DialogClose,
@@ -16,6 +17,7 @@ import {
 import { CommonInput } from "@/components/form/CommonInput";
 import { baseApiUrl } from "@/utils/common";
 import AsyncSearchSelectField from "@/components/form/AsyncSearchSelectField/AsyncSearchSelectField";
+import { toast } from "sonner";
 
 const EmailValuePickerModal = ({
   opened,
@@ -34,17 +36,32 @@ const EmailValuePickerModal = ({
 
   const getEmailTemplates = async (val: string) => {
     try {
-      const response = await fetch(baseApiUrl + "/email");
-      const data = await response.json();
+      const userToken = Cookies.get("userToken");
+      const response = await fetch(baseApiUrl + "/email", {
+        headers: { Authorization: `Bearer ${userToken}` },
+      });
 
-      return data
-        .filter((genre: { _id: string; name: string }) =>
-          genre.name.toLowerCase().includes(val)
-        )
-        .map((genre: { _id: string; name: string }) => ({
-          value: genre._id,
-          label: genre.name,
-        }));
+      if (response.ok) {
+        const data = await response.json();
+
+        return data
+          .filter((genre: { _id: string; name: string }) =>
+            genre.name.toLowerCase().includes(val)
+          )
+          .map((genre: { _id: string; name: string }) => ({
+            value: genre._id,
+            label: genre.name,
+          }));
+      } else {
+        const err = await response.json();
+        toast.error("Error", {
+          description: err.msg,
+          action: {
+            label: "close",
+            onClick: () => {},
+          },
+        });
+      }
     } catch (err) {
       console.error("Error fetching genres", err);
       return [];
