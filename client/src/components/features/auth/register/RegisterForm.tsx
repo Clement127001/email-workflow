@@ -50,7 +50,7 @@ const RegisterForm = () => {
           },
         });
       }
-    } catch (err) {
+    } catch (_) {
       toast.error("Error", {
         description: "Failed to login",
         duration: 2000,

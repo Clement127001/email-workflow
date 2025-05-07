@@ -12,9 +12,9 @@ const Home = () => {
         <h1 className="text-2xl font-semibold">Add your workflow now</h1>
 
         <p className="max-w-[500px] leading-6 tracking-wide">
-          Welcome! Start by creating email templates, then build workflows by
+          {`Welcome! Start by creating email templates, then build workflows by
           dragging in nodes like delays and emails. Once you're done, run a
-          workflow to see it in action!
+          workflow to see it in action!`}
         </p>
 
         <div className="flex gap-10">

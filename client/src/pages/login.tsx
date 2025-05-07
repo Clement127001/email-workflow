@@ -59,7 +59,7 @@ export default function LoginPage() {
           <LoginForm />
 
           <p style={{ display: "flex" }}>
-            Don't have account?{" "}
+            {`Don't have account? `}
             <Link
               href={"/register"}
               className="text-app-primary-700 ml-2 font-semibold"

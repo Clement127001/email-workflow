@@ -269,7 +269,7 @@ const CreateWorkflow = () => {
           },
         });
       }
-    } catch (err) {
+    } catch (_) {
       toast.error("Error", {
         description: "Failed to create email template",
         duration: 2000,
