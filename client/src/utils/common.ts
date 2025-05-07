@@ -18,3 +18,11 @@ export const sidebarLinks = [
 export const logout = () => {
   //   Cookies.remove("userToken");
 };
+
+export function get(obj: any, path: any, defaultValue?: any) {
+  const pathArray = Array.isArray(path) ? path : path.split(".");
+
+  const result = pathArray.reduce((acc: any, key: any) => acc && acc[key], obj);
+
+  return result === undefined ? defaultValue : result;
+}

@@ -12,7 +12,7 @@ import {
 import { FormProvider, useForm } from "react-hook-form";
 import Title from "@/components/features/workflow/nodes/Title";
 import AddNodes from "@/components/features/workflow/nodes/AddNodes";
-import { WorkFlowNodeTypeEnum } from "@/types/workflow";
+import { AddNodeInterface } from "@/types/workflow";
 
 const NodeTypePickerModal = dynamic(
   import("@/components/features/workflow/NodeTypePickerModal").then(
@@ -34,11 +34,13 @@ const CreateWorkflow = () => {
       position: { x: 0, y: 0 },
       type: "nameUpdater",
       data: { label: "1" },
+      deletable: false,
     },
     {
       id: "add",
       position: { x: 100, y: 200 },
       type: "addNewNode",
+      deletable: false,
       data: {
         label: "1",
         onAdd: () => {
@@ -65,10 +67,22 @@ const CreateWorkflow = () => {
     [setEdges]
   );
 
-  const onAddNode = ({ type }: { type: WorkFlowNodeTypeEnum }) => {};
-
   const onCloseNodePickerModal = () => {
     setAddNodeModalOpened(false);
+  };
+
+  const onAddNode = ({ type, data }: AddNodeInterface) => {
+    onCloseNodePickerModal();
+    console.log(type, data);
+    // remove the last node
+    // add new new node before previous node
+    // add the new node picker as the last node
+    // change the edges
+  };
+
+  const handleCreateWorkflow = () => {
+    //get the data from the nodes.data, nodes.id, nodes.position
+    //get the edges from the edges
   };
 
   return (
@@ -92,7 +106,7 @@ const CreateWorkflow = () => {
         <NodeTypePickerModal
           opened={addNodeModalOpened}
           onClose={onCloseNodePickerModal}
-          onClickConfirm={onCloseNodePickerModal}
+          onAddNode={onAddNode}
         />
       )}
     </div>
